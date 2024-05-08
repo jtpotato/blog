@@ -4,9 +4,17 @@ description: Rust can run on pretty much anything at this point...
 pubDate: 2024-05-08
 ---
 
+The Lego Mindstorms EV3 might be the very origin story of my journey in STEM. It was my first exposure to programming and robotics competitions, and for this, it still holds a special place in my heart.
+
+At the time, the programming language of choice was EV3-G. This was the graphical language that Lego themselves provided with the EV3, and while bugs were incredibly common and the community eventually developed hacky workarounds for most of these, it was a staple of FLL and Robocup teams for the most part of a decade.
+
+Lego eventually released a Scratch-like method of programming EV3 hardware, similar to how the newer Spike Prime was programmed. However as the robotics team developed their skills, we ultimately decided that using a text-based programming language (finally!!) would be more effective. RobotC is essentially a dialect of C primarily made for VEX kits although compatible with EV3 - and this served us well.
+
+Many years have passed and the robotics team is no longer together - and I also now lack a Windows machine. Finally given a chance to return to the EV3 for Robocup soccer, I decided to investigate how to use a more modern language - Rust - on the EV3.
+
 ### Step 1: Flash EV3DEV onto microSD Card
 
-1. Follow the instructions provided by EV3DEV to flash a microSD SDHC card with the EV3DEV operating system.
+1. Follow the instructions provided by EV3DEV to flash a microSD SDHC card with the [EV3DEV operating system](https://www.ev3dev.org/).
 2. Insert the flashed microSD card into your EV3 brick and boot it up.
 3. Connect to the EV3 brick via SSH. By default, the hostname is `ev3dev.local`. Use the following command to establish the SSH connection:
 
@@ -29,18 +37,18 @@ pubDate: 2024-05-08
 1. Use the `ssh-copy-id` command to copy your local SSH public key to the EV3 brick. Replace `remote-user` and `remote-host` with your appropriate username and hostname:
 
    ```
-   ssh-copy-id remote-user@remote-host
+   ssh-copy-id robot@ev3dev.local
    ```
 
-   For EV3DEV, the default username and hostname are `robot` and `ev3dev.local`, respectively.
+   For EV3DEV, the default username and hostname are `robot` and `ev3dev.local`.
 
 ### Step 4: Create a Rust Program
 
 1. Install Rust programming language and Cargo if you haven't already. Follow the official Rust documentation for installation instructions: [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install).
-2. Create a new Rust project using Cargo and the `ev3dev_lang_rust` package. This package provides bindings to the EV3DEV API for Rust. Run the following command to create a new project:
+2. Create a new Rust project using Cargo and the `ev3dev_lang_rust` [package](https://github.com/pixix4/ev3dev-lang-rust). This package provides bindings to the EV3DEV API for Rust. Run the following command to create a new project:
 
    ```
-   cargo new --bin my_ev3_project
+   cargo new my_ev3_project
    ```
 
 ### Step 5: Set Up Cross-Compilation
@@ -80,5 +88,3 @@ pubDate: 2024-05-08
    ```
 
    Run `make deploy` to automatically copy the compiled binary to your EV3 brick.
-
-Congratulations! You have successfully set up your environment for Rust programming on EV3DEV and deployed your first Rust program to your EV3 brick. Happy coding!
