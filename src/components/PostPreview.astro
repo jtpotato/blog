@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  slug: string;
+}
+
+const { title, description, pubDate, slug } = Astro.props;
+---
+
+<a href={`/blog/${slug}`}>
+  <div class="">
+    <div class="flex items-center gap-8">
+      <h4 class="font-bold text-lg">{title}</h4>
+      <p class="italic text-secondary">
+        {
+          pubDate.toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+        }
+      </p>
+    </div>
+    <p class="">{description}</p>
+  </div>
+</a>
