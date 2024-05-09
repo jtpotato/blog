@@ -45,6 +45,8 @@ Many years have passed since then, and EV3-G has been replaced by a Scratch-like
 
    ```
    cargo new my_ev3_project
+   cd my_ev3_project
+   cargo add ev3dev_lang_rust
    ```
 
 ### Step 5: Set Up Cross-Compilation
@@ -55,7 +57,7 @@ Many years have passed since then, and EV3-G has been replaced by a Scratch-like
    rustup target add armv5te-unknown-linux-musleabi
    ```
 
-2. Configure Cargo to use the specified toolchain for cross-compilation by creating a `.cargo/config` file in your project directory with the following contents:
+2. Configure Cargo to use the specified toolchain for cross-compilation by creating a `.cargo/config.toml` file in your project directory with the following contents:
 
    ```toml
    [build]
