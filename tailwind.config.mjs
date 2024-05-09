@@ -7,6 +7,9 @@ export default {
         secondary: "#888",
       },
     },
+    fontFamily: {
+      sans: ["Inter", "sans-serif"],
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };

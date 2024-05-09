@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
 import Header from "../../components/Header.astro";
+import CustomHead from "../../components/CustomHead.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -15,7 +16,18 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Header />
-<BlogPost title={post.data.title} date={post.data.pubDate}>
-  <Content />
-</BlogPost>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <CustomHead />
+    <Header />
+    <BlogPost title={post.data.title} date={post.data.pubDate}>
+      <Content />
+    </BlogPost>
+  </body>
+</html>

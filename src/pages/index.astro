@@ -1,4 +1,5 @@
 ---
+import CustomHead from "../components/CustomHead.astro";
 import Header from "../components/Header.astro";
 import PostPreview from "../components/PostPreview.astro";
 
@@ -16,6 +17,7 @@ const posts = (await getCollection("blog")).sort(
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>jtpotato's Blog</title>
+    <CustomHead />
   </head>
   <body>
     <Header />
